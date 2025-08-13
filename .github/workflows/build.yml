@@ -20,11 +20,7 @@ jobs:
 
       - name: Restore NuGet packages
         run: nuget restore WinsockPacketEditor.sln
-        
-      - name: Disable ClickOnce signing
-        shell: powershell
-        run: .\.github\workflows\fix-signing.ps1
-        
+
       - name: Build the project
         run: msbuild WinsockPacketEditor.sln /p:Configuration=Release /p:Platform="Any CPU" /p:SignManifests=false
 
@@ -33,4 +29,5 @@ jobs:
         with:
           name: WPE-x64-Compiled
           path: |
-            bin/x64/Release/
+            WinsockPacketEditor\bin\Release\
+            WPELibrary\bin\Release\
